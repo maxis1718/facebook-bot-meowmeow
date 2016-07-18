@@ -197,9 +197,9 @@ function receivedMessage(event) {
   var messageAttachments = message.attachments;
 
   if (messageText) {
-    gulis(senderID, messageText, 'text');
+    meow(senderID, messageText);
   } else if (messageAttachments) {
-    gulis(senderID, messageAttachments, 'attachments');
+    // gulis(senderID, messageAttachments, 'attachments');
   } else {
     // TODO
   }
@@ -256,6 +256,18 @@ function receivedPostback(event) {
   var msg = msgs[Math.floor(Math.random() * msgs.length)];
 
   sendTextMessage(senderID, '已加入 ' + payload + '，' + msg);
+}
+
+function meow(recipientId, messageText) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: messageText
+    }
+  };
+  callSendAPI(messageData);
 }
 
 function gulis(recipientId, message, messageType) {
