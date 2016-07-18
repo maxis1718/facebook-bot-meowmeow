@@ -259,12 +259,14 @@ function receivedPostback(event) {
 }
 
 function meow(recipientId, messageText) {
+  var meowTextList = ['喵喵', '朕知道了', '快餵我啦', '來摸我嘛', '我好愛你', '不爽', '(伸懶腰)', '(懶洋洋)', '喵'];
+  var meowText = meowTextList[Math.floor(Math.random() * meowTextList.length)];
   var messageData = {
     recipient: {
       id: recipientId
     },
     message: {
-      text: messageText
+      text: meowText
     }
   };
   callSendAPI(messageData);
